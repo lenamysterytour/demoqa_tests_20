@@ -9,6 +9,7 @@ repositories {
 dependencies {
             testImplementation 'org.junit.jupiter:junit-jupiter:5.9.3'
             testImplementation 'com.codeborne:selenide:6.14.0'
+            testImplementation 'org.seleniumhq.selenium:selenium-java:4.9.1'
 }
 
 tasks.withType(JavaCompile) {
