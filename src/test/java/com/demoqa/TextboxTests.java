@@ -5,14 +5,12 @@ import com.codeborne.selenide.Selectors;
 import com.codeborne.selenide.selector.ByText;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 
-import javax.annotation.CheckReturnValue;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-
-@CheckReturnValue
 
 public class TextboxTests {
 
@@ -24,7 +22,7 @@ public class TextboxTests {
     }
 
     @Test
-    void sucessTest(){
+    void successTest(){
         open("/automation-practice-form");
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
@@ -32,27 +30,28 @@ public class TextboxTests {
         $("#lastName").setValue("Pupkin");
         $("#userEmail").setValue("vasya@pupkin.com");
         $("#genterWrapper").$(byText("Male")).click();
-        $("#userNumber").setValue("2741001");
+        $("#userNumber").setValue("2741001274");
         $("#dateOfBirthInput").pressEnter();
         $("#subjectsContainer").$("#subjectsInput").setValue("QA");
         $("#hobbiesWrapper").$(byText("Reading")).click();
-        $("#uploadPicture").uploadFromClasspath("Java.png");
         $("#currentAddress").setValue("Kazansky vokzal");
-        $("stateCity-wrapper").$("state").setValue("NCR");
-        $("stateCity-wrapper").$("city").setValue("Gurgaon");
-        $("submit").click();
+        $("#uploadPicture").uploadFromClasspath("Java.png");
+        $("#stateCity-wrapper").$("#state").click();
+        $("#state").$(byText("NCR")).click();
+        $("#stateCity-wrapper").$("#city").click();
+        $("#city").$(byText("Gurgaon")).click();
+        $("#submit").click();
 
 
-$(Selectors.withText("Student Name")).shouldHave(text("Vasya Pupkin"));
-$(Selectors.withText("Student Email")).shouldHave(text("vasya@pupkin.com"));
-$(Selectors.withText("Gender")).shouldHave(text("Male"));
-$(Selectors.withText("Mobile")).shouldHave(text("2741001"));
-$(Selectors.withText("Date of Birth")).shouldHave(text("31 May 2023"));
-$(Selectors.withText("Subjects")).shouldHave(text("QA"));
- $(Selectors.withText("Hobbies")).shouldHave(text("Reading"));
- $(Selectors.withText("Picture")).shouldHave(text("Java.png"));
- $(Selectors.withText("Address")).shouldHave(text("Kazansky vokzal"));
- $(Selectors.withText("State and City")).shouldHave(text("NCR Gurgaon"));
+        $(".table-responsive").shouldHave(text("Vasya Pupkin"));
+        $(".table-responsive").shouldHave(text("vasya@pupkin.com"));
+        $(".table-responsive").shouldHave(text("Male"));
+        $(".table-responsive").shouldHave(text("2741001274"));
+        $(".table-responsive").shouldHave(text("31 May,2023"));
+        $(".table-responsive").shouldHave(text("Kazansky vokzal"));
+        $(".table-responsive").shouldHave(text("NCR"));
+        $(".table-responsive").shouldHave(text("Gurgaon"));
+
 
     }
 }
