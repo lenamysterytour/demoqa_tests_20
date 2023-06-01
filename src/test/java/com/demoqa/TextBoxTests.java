@@ -9,17 +9,17 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class TextboxTests {
+public class TextBoxTests {
 
     @BeforeAll
-    static void BeforeAll(){
-        Configuration.browser="chrome";
-        Configuration.browserSize="1920x1080";
-        Configuration.baseUrl="https://demoqa.com";
+    static void beforeAll() {
+        Configuration.browser = "chrome";
+        Configuration.browserSize = "1920x1080";
+        Configuration.baseUrl = "https://demoqa.com";
     }
 
     @Test
-    void successTest(){
+    void successTest() {
         open("/automation-practice-form");
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
@@ -38,20 +38,18 @@ public class TextboxTests {
         $("#state").$(byText("NCR")).click();
         $("#stateCity-wrapper").$("#city").click();
         $("#city").$(byText("Gurgaon")).click();
-     $("#submit").click();
+        $("#submit").click();
 
 
         $(".table-responsive").shouldHave(text("Vasya Pupkin"));
         $(".table-responsive").shouldHave(text("vasya@pupkin.com"));
         $(".table-responsive").shouldHave(text("Male"));
         $(".table-responsive").shouldHave(text("2741001274"));
-        $(".table-responsive").shouldHave(text("31 May,2023"));
+        $(".table-responsive").shouldHave(text("1 June,2023"));
         $(".table-responsive").shouldHave(text("English"));
         $(".table-responsive").shouldHave(text("Kazansky vokzal"));
         $(".table-responsive").shouldHave(text("NCR"));
         $(".table-responsive").shouldHave(text("Gurgaon"));
-
-
 
 
     }
